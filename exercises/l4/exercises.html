@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="harshan-a">
+
+  <title>Lesson 4</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      font-family: Poppins, sans-serif;
+    }
+
+    .btn {
+      display: block;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-bottom: 50px;
+      cursor: pointer;
+      background-color: rgb(25, 135, 84);
+      color: white;
+    }
+
+    .btn-false {
+      background-color: rgb(220, 53, 69);
+      color: white;
+    }
+
+    .form-container {
+      max-width: 300px;
+      /* background: lightpink; */
+      padding: 15px;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.15);
+    }
+
+    .form-container p {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .form-input-container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    .form-input-container input {
+      width: 200px;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 14px;
+      box-shadow: 0px 0px 2px rgb(0, 0, 0, 0.5);
+    }
+
+    .form-input-container .pass-controller-btn {
+      margin-left: 10px;
+      padding: 1px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .form-button-container {
+      margin-top: 20px;
+    }
+
+    .form-button {
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(0, 123, 255);
+      color: white;
+      padding: 7px 14px;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: opacity 0.15s
+    }
+    .form-button:hover {
+      opacity: 0.8;
+    }
+    .form-button:active {
+      opacity: 0.7;
+    }
+
+    .counter-app-container {
+      display: flex;
+      justify-content: center;
+      background-color: rgb(222, 222, 222);
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .counter-app-container button {
+      background-color: rgb(25, 135, 84);
+      border: none;
+      border-radius: 4px;
+      padding: 6px 10px;
+      color: white;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.5/dayjs.min.js"></script>
+
+  <script type="text/babel">
+
+    // 4a
+    function Button1(props) {
+      return (
+        <button
+          className="btn"
+        >ON</button>
+      )
+    }
+
+    // 4b
+    function Button2(props) {
+      const [isBtnOn, setIsBtnOn] = React.useState(false);
+
+      function clickEvent() {
+        isBtnOn
+          ? setIsBtnOn(false)
+          : setIsBtnOn(true);
+      }
+
+      return (
+        <button
+          className="btn"
+          onClick={clickEvent}
+        >
+          {isBtnOn ? "ON" : "OFF"}
+        </button>
+      )
+    }
+
+    // 4c
+    function Button3(props) {
+      const [isBtnOn, setIsBtnOn] = React.useState(false);
+
+      function clickEvent() {
+        isBtnOn
+          ? setIsBtnOn(false)
+          : setIsBtnOn(true);
+      }
+
+      return (
+        <button
+          className={"btn " + `btn-${isBtnOn}`}
+          onClick={clickEvent}
+        >
+          {isBtnOn ? "ON" : "OFF"}
+        </button>
+      )
+    }
+
+    // 4d and 4e
+    function Input(props) {
+      const [showPassword, setShowPassword] = React.useState(false);
+
+      function showPasswordHandler(e) {
+        showPassword
+          ? setShowPassword(false)
+          : setShowPassword(true);
+      }
+
+      return (
+        <div
+          className="form-input-container"
+        >
+          <input
+            type="text"
+            placeholder="Email"
+          />
+          <div>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+            />
+            <button
+              className="pass-controller-btn"
+              onClick={showPasswordHandler}
+            >{showPassword ? "Hide" : "Show"}</button>
+          </div>
+        </div>
+      );
+    }
+    function FormButton(props) {
+      return (
+        <div
+          className="form-button-container"
+        >
+          <button
+            className="form-button"
+          >Login</button>
+
+          <button
+            className="form-button"
+          >Sign Up</button>
+        </div>
+      );
+    }
+    function RegisterationForm(props) {
+      return (
+        <div
+          className="form-container"
+        >
+          <p>Hello, welcome to my website</p>
+          <Input />
+          <FormButton />
+        </div>
+      );
+    }
+
+    // 4f and 4g
+    function Clock() {
+      const time = dayjs().format("HH:mm:ss");
+      const [timeString, setTimeString] = React.useState(time);
+
+      React.useEffect(() => {
+        // console.log("running out");
+        setInterval(() => {
+          // console.log("running in");
+          // console.log(timeString);
+          const time = dayjs().format("HH:mm:ss");
+          setTimeString(time);
+        }, 1000)
+      }, []);
+
+      return (
+        <div>
+          <p
+            style={{ marginTop: "50px" }}
+          >Current time: {timeString}</p>
+        </div>
+      );
+    }
+
+
+    // 4h and 4i
+    function CounterApp (props) {
+      const [ count, setCount ] = React.useState(0);
+      const [ isAutoUpdating, setIsAutoUpdating ] = React.useState(false);
+      const intervalIdRef = React.useRef(null);
+      const clickedButtonRef = React.useRef(null);
+
+      React.useEffect(() => {
+        return () => clearInterval(intervalIdRef.current); // cleanup function runs when component unmount;
+      }, [])
+
+      function autoUpdateHandler () {
+        if(!isAutoUpdating) {
+          intervalIdRef.current = setInterval(() => {
+            const {current:clickedButton} = clickedButtonRef;
+            clickedButton.click();
+            
+          }, 1000)
+          setIsAutoUpdating(true);
+          
+        } else {
+          clearInterval(intervalIdRef.current);
+          setIsAutoUpdating(false);
+        }
+      }
+
+      return (
+        <div
+          style={{marginTop: "50px"}}
+          className="counter-app-container"
+        >
+          <button
+            onClick={() => setCount(count + 1)}
+            ref={clickedButtonRef}
+          >Clicked {count} {count <= 1 ? "time" : "times"}</button>
+          <button
+            onClick={() => setCount(0)}
+          >Reset</button>
+          <button
+            onClick={autoUpdateHandler}
+          >{isAutoUpdating ? "Stop": "Start"} Auto Update</button>
+        </div>
+      );
+    }
+
+
+    function App(props) {
+      return (
+        <>
+          <Button1 />
+          <Button2 />
+          <Button3 />
+          <RegisterationForm />
+          <Clock />
+          <CounterApp />
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector(".root"));
+    root.render(<App />);
+
+  </script>
+</body>
+
+</html>

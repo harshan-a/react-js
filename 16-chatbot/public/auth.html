@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://unpkg.com 'unsafe-inline'">
+
+
+  <title>Auth Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Poppins, sans-serif;
+    }
+    button {
+      cursor: pointer;
+    }
+    .root {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(80, 235, 255, 0.8);
+      opacity: 0.9;
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 7px rgb(255, 255, 255);
+      background-color: white;
+      user-select: none;
+      transition: transform 0.17s;
+    }
+    .form-container:hover {
+      transform: scale(1.05);
+    }
+
+    .form-header h5{
+      margin: 0;
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: rgb(80, 235, 255);
+    }
+
+    .form-input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 7px;
+    }
+    .form-input-container input {
+      width: 280px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(117, 239, 255, 0.5);
+      font-size: 14px;
+      transition: transform 0.15s;
+    }
+    .form-input-container input::placeholder {
+      font-family: Poppins, sans-serif;
+    }
+    .form-input-container input:focus,
+    .form-input-container input:hover {
+      transform: scale(1.035);
+    }
+    .form-input-container button {
+      margin-top: 10px;
+      background-color: rgb(80, 235, 255);
+      color: white;
+      font-size: 15px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 6px rgb(117, 239, 255);
+      padding: 7px 14px;
+      transition: transform 0.1s;
+    }
+    
+    .form-input-container .password-field-container {
+      position: relative;
+    }
+    .form-input-container .password-field-container span {
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      opacity: 0;
+      transition: transform 0.1s, opacity 0.1s linear;
+    }
+    .form-input-container .password-field-container:hover span {
+      opacity: 1;
+    }
+    .form-input-container .password-field-container span:active {
+      transform: scale(1.02);
+    }
+
+    .form-input-container button:hover,
+    .form-footer button:hover {
+      transform: translateY(-2px);
+    }
+    .form-input-container button:active,
+    .form-footer button:active {
+      transform: scale(1.1);
+    }
+
+    .form-footer {
+      font-size: 12px;
+      text-align: center;
+    }
+    .form-footer button {
+      border: none;
+      background: none;
+      padding: 0;
+      color:rgb(80, 235, 255);
+      transition: transform 0.1s;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    function FormContent (props) {
+      const [ isLogin, setIsLogin ] = React.useState(false);
+      const [ showPassword, setShowPassword ] = React.useState(false);
+      const [ formData, setFormData ] = React.useState({
+        name: "",
+        email: "",
+        password: ""
+      })
+
+      const formType = isLogin ? "login" : "register";
+
+      function formTypeHandler (e) {
+        setIsLogin(prev => !prev);
+
+        setDefaultFormData();
+        setShowPassword(false);
+      }
+
+      function showPasswordHandler (e) {
+        setShowPassword(prev => !prev);
+      }
+
+      function formDataHandler (e) {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }))
+      }
+
+      async function formSubmitionHandler () {
+        // const res = await fetch("/api/v1/" + formType, {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json"
+        //   },
+        //   body: JSON.stringify(formData)
+        // });
+        // const result = await res.json();
+        // if(res.status >= 400) {
+        //   console.log(result);
+        //   return alert(result.msg);
+        // }
+        
+        setDefaultFormData();
+        window.location.href = "./index.html"
+      }
+
+      function setDefaultFormData () {
+        setFormData({
+          name: "",
+          email: "",
+          password: ""
+         })
+      }
+
+      return (
+        <div className="form-container">
+          <div className="form-header">
+            <h5>{!isLogin ? "Register" : "Login"}</h5>
+          </div>
+          <div className="form-input-container">
+            {
+              !isLogin && 
+                <input 
+                  type="text" 
+                  name="name"
+                  placeholder="Username" 
+                  onChange={formDataHandler}
+                  value={formData.name}
+                />
+            }  
+            <input 
+              type="email" 
+              name="email"
+              placeholder="Email" 
+              onChange={formDataHandler}
+              value={formData.email}
+            />
+            <div className="password-field-container">
+              <input 
+                type={showPassword ? "text" : "password"} 
+                placeholder="Password" 
+                name="password"
+                onChange={formDataHandler}
+                value={formData.password}
+              />
+              <span
+                onClick={showPasswordHandler}
+              >{showPassword ? "hide" : "show"}</span>
+            </div>
+            <button
+              onClick={formSubmitionHandler}
+            >Submit</button>
+          </div>
+          <p className="form-footer">
+            {
+              !isLogin ? (
+                <span>If already you have an account, </span>
+              ) : (
+                <span>If you don't have to account, </span>
+              )
+            }
+            <button
+              onClick={formTypeHandler}
+            >click here</button>
+          </p>
+        </div>
+      );
+    }
+
+    function App (props) {
+      return (
+        <FormContent />
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector(".root"));
+    root.render(<App />);
+  </script>
+
+</body>
+</html>

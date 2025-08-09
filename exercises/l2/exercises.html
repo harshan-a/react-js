@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="harshan-a">
+
+  <title>Lesson 2</title>
+</head>
+
+<body>
+
+  <div class="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 2a
+    function Ex2a(props) {
+      return (
+        <div>
+          <p>Hello, welcome to my website</p>
+        </div>
+      );
+    }
+
+    // 2b
+    function Ex2b(props) {
+      return (
+        // fragments, that are used to group of html code without any extra div in jsx
+        <div style={{ marginTop: 50 + "px" }}>
+          <p>Hello, welcome to my website</p>
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      )
+    }
+
+    // 2c
+    function Input(props) {
+      return (
+        <div style={
+          {
+            display: "flex",
+            flexDirection: "column",
+            width: "fit-content",
+            rowGap: "5px",
+            marginBottom: "7px"
+          }
+        }>
+          <input
+            type="text"
+            placeholder="Email"
+            size="25"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            size="25"
+          />
+        </div>
+      );
+    }
+    function Ex2c(props) {
+      return (
+        <div style={{ marginTop: 50 + "px" }}>
+          <p>Hello, welcome to my website</p>
+          <Input />
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      )
+    }
+
+    // Ex2d
+    function LoginForm(props) {
+      return (
+        <div>
+          <Input />
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      );
+    }
+    function Ex2d(props) {
+      return (
+        <div style={{ marginTop: 50 + "px" }}>
+          <p>Hello, welcome to my website</p>
+          <LoginForm />
+        </div>
+      )
+    }
+
+    // Ex2e
+    const socksCost = 1090 / 100;
+    function Ecom_App1(props) {
+      return (
+        <div style={{ marginTop: "50px" }}>
+          <p> Cotton socks </p>
+          <p> Price: ${socksCost.toFixed(2)} </p>
+          <button> Add to cart </button>
+        </div>
+      );
+    }
+
+    // Ex2f
+    const tennisBallsCost = 600 / 100;
+    const tshirtCost = 799 / 100;
+    function ProductsDetails1(props) {
+      const { name, price } = props;
+      return (
+        <div>
+          <p> {name} </p>
+          <p> Price: ${price.toFixed(2)} </p>
+          <button> Add to cart </button>
+        </div>
+      );
+    }
+    function Ecom_App2(props) {
+      return (
+        <div style={{ marginTop: "50px" }}>
+          <ProductsDetails1
+            name="Cotton socks"
+            price={socksCost}
+          />
+          <ProductsDetails1
+            name="Tennis balls"
+            price={tennisBallsCost}
+          />
+          <ProductsDetails1
+            name="Plain T-shirt"
+            price={tshirtCost}
+          />
+        </div>
+      );
+    }
+
+    // Ex2g
+    function ProductsDetails2(props) {
+      const { name, price, discountPrice } = props;
+      return (
+        <div>
+          <p> {name} </p>
+          <p> Price: ${price.toFixed(2)} </p>
+          {discountPrice && (
+            <p> Discount Price: ${discountPrice.toFixed(2)} </p>
+          )}
+          <button> Add to cart </button>
+        </div>
+      );
+    }
+    function Ecom_App3(props) {
+      return (
+        <div style={{ marginTop: "50px" }}>
+          <ProductsDetails2
+            name="Cotton socks"
+            price={socksCost}
+            discountPrice={5.45}
+          />
+          <ProductsDetails2
+            name="Tennis balls"
+            price={tennisBallsCost}
+          />
+          <ProductsDetails2
+            name="Plain T-shirt"
+            price={tshirtCost}
+          />
+        </div>
+      );
+    }
+
+    // Ex2h
+    function ProductsDetails3(props) {
+      const { name, price, discountPrice } = props;
+      return (
+        <div>
+          <p> {name} </p>
+          {discountPrice
+            ?
+            (
+              <>
+                <del>
+                  Price: ${price.toFixed(2)}
+                </del>
+                <p> Discount Price: ${discountPrice.toFixed(2)} </p>
+              </>
+            )
+            :
+            <p> Price: ${price.toFixed(2)} </p>
+          }
+          <button> Add to cart </button>
+        </div>
+      );
+    }
+    function Ecom_App4(props) {
+      return (
+        <div style={{ marginTop: "50px" }}>
+          <ProductsDetails3
+            name="Cotton socks"
+            price={socksCost}
+            discountPrice={5.45}
+          />
+          <ProductsDetails3
+            name="Tennis balls"
+            price={tennisBallsCost}
+          />
+          <ProductsDetails3
+            name="Plain T-shirt"
+            price={tshirtCost}
+          />
+        </div>
+      );
+    }
+
+
+    // Ex2j
+    function ProductsDetails4(props) {
+      const { imageSrc, name, price, discountPrice } = props;
+      return (
+        <div>
+          <img
+            src={"https://supersimple.dev/images/" + imageSrc}
+            alt={imageSrc}
+            width="100"
+            style={{ marginTop: "10px" }}
+          />
+          <p> {name} </p>
+          {discountPrice
+            ?
+            (
+              <>
+                <del>
+                  Price: ${price.toFixed(2)}
+                </del>
+                <p> 
+                  Discount Price: ${discountPrice.toFixed(2)} 
+                </p>
+              </>
+            )
+            :
+            <p> Price: ${price.toFixed(2)} </p>
+          }
+          <button> Add to cart </button>
+        </div>
+      );
+    }
+    function Ecom_App5(props) {
+      return (
+        <div style={{ marginTop: "50px" }}>
+          <ProductsDetails4
+            imageSrc="cotton-socks.png"
+            name="Cotton socks"
+            price={socksCost}
+            discountPrice={5.45}
+          />
+          <ProductsDetails4
+            imageSrc="tennis-balls.png"
+            name="Tennis balls"
+            price={tennisBallsCost}
+          />
+          <ProductsDetails4
+            imageSrc="plain-t-shirt.png"
+            name="Plain T-shirt"
+            price={tshirtCost}
+          />
+        </div>
+      );
+    }
+
+
+
+    function App(props) {
+      return (
+        <>
+          <Ex2a />
+          <Ex2b />
+          <Ex2c />
+          <Ex2d />
+          <Ecom_App1 />
+          <Ecom_App2 />
+          <Ecom_App3 />
+          <Ecom_App4 />
+          <Ecom_App5 />
+        </>
+      );
+    }
+    const root = ReactDOM.createRoot(document.querySelector('.root'));
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

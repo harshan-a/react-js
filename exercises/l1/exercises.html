@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1</title>
+</head>
+
+<body>
+  <div class="root"></div>
+
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.5/dayjs.min.js"></script>
+
+
+  <script type="text/babel">
+    // 1a
+    const button = <button className="first-btn">God Job!</button>
+
+    // 1b
+    const name = "Harshan";
+    const paragraph = (
+      <p style={{ marginTop: 50 + "px" }}>
+        My name is {name}
+      </p>
+    );
+
+    // 1c
+    const socksCost = 10;
+    const e1cDiv = (
+      <div style={{ marginTop: 50 + "px" }}>
+        <p> Cotton socks </p>
+        <p> Price: ${socksCost} </p>
+        <button> Add to cart </button>
+      </div>
+    );
+
+    // 1d
+    const tshirtCost = 8;
+    const productCost = (1 * socksCost) + (2 * tshirtCost);
+    console.log(productCost);
+
+    // 1e
+    const productCostParagraph = (
+      <p style={{marginTop: 50 + "px"}}>
+        Product Cost: ${productCost}
+      </p>
+    );
+
+    // 1f
+    const shippingCost = 5;
+    const totalCost = productCost + shippingCost;
+    const costDetails = (
+      <div style={{marginTop : 50 + "px"}}>
+        {productCostParagraph}
+        <p>Shipping Cost : ${shippingCost}</p>
+        <p>Total Cost : ${totalCost}</p>
+        <button>Place your order</button>
+      </div>
+    );
+
+    // 1g
+    const date = new dayjs().format("MMMM D");
+    console.log(date);
+
+    // 1h 
+    const dateParagraph = createParagraph("Today is ", date);
+
+    // 1i
+    let time = new dayjs().format("HH:mm:ss")
+    let timeParagraph = createParagraph("Current Time: ", time);
+    
+
+    const div = (
+      <div>
+        {button}
+        {paragraph}
+        {e1cDiv}
+        {productCostParagraph}
+        {costDetails}
+        {dateParagraph}
+        {timeParagraph}
+      </div>
+    )
+    const root = ReactDOM.createRoot(document.querySelector(".root"));
+    root.render(div);
+
+    // 1j
+     setInterval(() => {
+      time = new dayjs().format("HH:mm:ss")
+      timeParagraph = createParagraph("Current Time: ", time);
+
+      const div = (
+        <div>
+          {button}
+          {paragraph}
+          {e1cDiv}
+          {productCostParagraph}
+          {costDetails}
+          {dateParagraph}
+          {timeParagraph}
+        </div>
+      );
+      root.render(div);
+
+    }, 1000);
+
+    
+
+    function createParagraph(msg, data) {
+      return <p style={{marginTop: 50 + "px"}}>
+        {msg} {data}
+      </p>
+    }
+  </script>
+</body>
+
+</html>

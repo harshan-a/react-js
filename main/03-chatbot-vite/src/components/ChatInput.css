@@ -1,0 +1,36 @@
+.chat-input-container.bottom {
+  display: flex;
+  margin-bottom: 60px;
+}
+.chat-input-container.top {
+  display: flex;
+  margin-top: 20px;
+}
+.chat-input-container button {
+  color: white;
+  background-color: rgb(25, 135, 84);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-left: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.chat-input-container .clear-btn {
+  background-color: lightgray;
+  color: black;
+}
+.chat-input-container button:hover {
+  transform: scale(1.05)
+}
+.chat-input-container button:active {
+  transform: scale(0.95)
+}
+.chat-input-container input[type="text"] {
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 15px;
+  flex-grow: 1
+}

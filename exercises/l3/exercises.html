@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="harshan-a">
+
+    <title>Lesson 3</title>
+  </head>
+  <body>
+    <div class="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 3a
+      function CounterButton1 (props) {
+        return (
+          <button
+            onClick={() => console.log("clicked")}
+          >Clicked 0 times</button>
+        );
+      }
+
+      // 3b
+      function CounterButton2 (props) {
+        const [ count, setCount ] = React.useState(0);
+
+        return (
+          <div style={{marginTop: "50px"}}>
+            <button
+              onClick={(e) => setCount(count + 1)}
+            >Clicked {count} times
+            </button>
+          </div>
+        );
+      }
+
+      // 3c
+      function CounterButton3 (props) {
+        const [count, setCount ] = React.useState(0);
+
+        return (
+          <div style={{marginTop: "50px"}}>
+            <button
+              onClick={(e) => setCount(count + 1)}
+            >{count <= 1 ? 
+              "Clicked " + count + " time" : 
+              "Clicked " + count + " times"
+            }
+            </button>
+          </div>
+        );
+      }
+
+      // 3d
+      function CounterButton4 (props) {
+        const [ count, setCount ] = React.useState(0);
+
+        return (
+          <>
+            <button
+              onClick={() => setCount(count + 1)}
+              style={{marginTop: "50px"}}
+            >{count <= 1 ? 
+              "Clicked " + count + " time" : 
+              "Clicked " + count + " times"
+            }</button>
+          </>
+        );
+      }
+
+      // 3e
+      function CounterButton5 (props) {
+        const { count, setCount } = props;
+        return (
+          <>
+            <button
+              onClick={() => setCount(count + 1)}
+              style={{marginTop: "50px"}}
+            >{count <= 1 ? 
+              "Clicked " + count + " time" : 
+              "Clicked " + count + " times"
+            }</button>
+          </>
+        );
+      }
+
+      // 3f
+      function ResetButton1 (props) {
+        const { count, setCount } = props;
+
+        return (
+          <>
+            <button
+              onClick={() => setCount(0)}
+              style={{marginTop: "50px"}}
+            >Reset</button>
+          </>
+        );
+      }
+
+      // 3g
+      function DisplayAsYouType1 (props) {
+        const [ inputText, setInputText ] = React.useState("");
+
+        function changeText(e) {
+          const value = e.target.value;
+          setInputText(value);
+        }
+
+        return (
+          <>
+            <input 
+              type="text" 
+              placeholder="Type anything you want.." 
+              onChange={changeText}
+            />
+            <p>Hello! {inputText}</p>
+          </>
+        )
+      }
+
+      // 3h
+      function DisplayAsYouType2 (props) {
+        const [ inputText, setInputText ] = React.useState("");
+
+        function changeText(e) {
+          const value = e.target.value;
+          setInputText(value);
+        }
+
+        return (
+          <>
+            <input 
+              type="text" 
+              placeholder="Type anything you want.." 
+              onChange={changeText}
+              value={inputText}
+            />
+            <button
+              onClick={() => setInputText("")}
+            >Reset</button>
+            <button
+              onClick={() => setInputText("Harshan")}
+            >Example</button>
+            <p>Hello! {inputText}</p>
+          </>
+        )
+      }
+
+
+      function App1 (props) {
+        return (
+          <>
+            <CounterButton1 />
+            <CounterButton2 />
+            <CounterButton3 />
+          </>
+        );
+      }
+
+      function App2 (props) {
+       
+        return (
+          <div>
+            <CounterButton4 />
+            <CounterButton4 />
+          </div>
+        )
+      }
+
+      function App3 (props) {
+        const [ count, setCount ] = React.useState(0);
+
+        return (
+          <div>
+            <CounterButton5
+              count={count}
+              setCount={setCount}
+            />
+            <CounterButton5 
+              count={count}
+              setCount={setCount}
+            />
+          </div>
+        )
+      }
+
+      function App4 (props) {
+        const [ count, setCount ] = React.useState(0);
+
+        return (
+          <div>
+            <CounterButton5
+              count={count}
+              setCount={setCount}
+            />
+            <CounterButton5 
+              count={count}
+              setCount={setCount}
+            />
+            <ResetButton1 
+              count={count}
+              setCount={setCount}
+            />
+          </div>
+        )
+      }
+
+      function App5 (props) {
+        return (
+          <div style={{marginTop: "50px"}}>
+            <DisplayAsYouType1 />
+          </div>
+        );
+      }
+
+      function App6 (props) {
+        return (
+          <div style={{marginTop: "50px"}}>
+            <DisplayAsYouType2 />
+          </div>
+        );
+      }
+
+      function App (props) {
+        return (
+          <>
+            <App1 />
+            <App2 />
+            <App3 />
+            <App4 />
+            <App5 />
+            <App6 />
+          </>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.querySelector(".root"));
+      root.render(<App />);
+
+    </script>
+
+  </body>
+</html>

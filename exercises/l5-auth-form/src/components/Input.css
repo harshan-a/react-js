@@ -1,0 +1,21 @@
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-input-container input {
+  width: 200px;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+  box-shadow: 0px 0px 2px rgb(0, 0, 0, 0.5);
+}
+
+.form-input-container .pass-controller-btn {
+  margin-left: 10px;
+  padding: 1px;
+  font-size: 12px;
+  cursor: pointer;
+}

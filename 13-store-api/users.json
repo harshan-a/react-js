@@ -1,0 +1,61 @@
+[
+  {
+    "_id": 1,
+    "name": "Alice",
+    "age": 28,
+    "email": "alice@example.com",
+    "address": {
+      "city": "New York",
+      "zip": "10001"
+    },
+    "hobbies": ["reading", "yoga", "travel"],
+    "orders": [
+      { "order_id": 101, "item": "Laptop", "amount": 1200 },
+      { "order_id": 102, "item": "Headphones", "amount": 150 }
+    ]
+  },
+  {
+    "_id": 2,
+    "name": "Bob",
+    "age": 35,
+    "email": "bob@example.com",
+    "address": {
+      "city": "Los Angeles",
+      "zip": "90001"
+    },
+    "hobbies": ["gaming", "cycling", "reading"],
+    "orders": [
+      { "order_id": 103, "item": "Camera", "amount": 800 }
+    ]
+  },
+  {
+    "_id": 3,
+    "name": "Charlie",
+    "age": 22,
+    "email": "charlie@example.com",
+    "address": {
+      "city": "Chicago",
+      "zip": "60601"
+    },
+    "hobbies": ["reading", "drawing"],
+    "orders": [],
+    "results": [ 75, 88, 89 ]
+  },
+  {
+    "_id": 4,
+    "name": "Diana",
+    "age": 30,
+    "email": "diana@example.com",
+    "address": {
+      "city": "New York",
+      "zip": "10002"
+    },
+    "hobbies": ["drawing", "travel"],
+    "orders": [
+      { "order_id": 104, "item": "Smartphone", "amount": 999 },
+      { "order_id": 105, "item": "Watch", "amount": 250 },
+      { "order_id": 106, "item": "Tablet", "amount": 500 }
+    ],
+    "results": [ 82, 85, 88 ]
+  }
+]

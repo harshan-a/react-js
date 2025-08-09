@@ -1,0 +1,14 @@
+.position-switcher-container {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+
+  text-align: center;
+}
+
+.position-switcher-container .position-switcher {
+  color: rgb(25, 135, 84);
+  text-decoration: underline;
+  cursor: pointer;
+}

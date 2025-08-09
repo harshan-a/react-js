@@ -1,0 +1,167 @@
+openapi: 3.0.0
+info:
+  title: 14 jwt basics
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://jwt-basics-14.onrender.com/api/v1
+  variables: {}
+paths:
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginRequest'
+              - examples:
+                - username: peter
+                  password: app
+              contentMediaType: application/json
+            example:
+              username: peter
+              password: app
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterRequest'
+              - examples:
+                - username: alice
+                  password: app
+              contentMediaType: application/json
+            example:
+              username: alice
+              password: app
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /auth/refresh-token:
+    get:
+      tags:
+      - Auth
+      summary: Refresh Token
+      operationId: RefreshToken
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /auth/logout:
+    delete:
+      tags:
+      - Auth
+      summary: Logout
+      operationId: Logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    parameters: []
+  /user/dashboard:
+    get:
+      tags:
+      - User
+      summary: Dashboard
+      operationId: Dashboard
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    parameters: []
+  /user:
+    delete:
+      tags:
+      - User
+      summary: Delete All Users
+      operationId: DeleteAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    parameters: []
+components:
+  schemas:
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      examples:
+      - username: peter
+        password: app
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      examples:
+      - username: alice
+        password: app
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Misc
+  description: ''
+- name: Auth
+  description: ''
+- name: User
+  description: ''
