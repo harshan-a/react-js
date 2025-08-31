@@ -80,7 +80,7 @@
     find() - 
       lean: Boolean, 
       populate: Object{path: "<field>"},
-      strict: Boolean,
+      strict: Boolean, ** if false dont validate **
       limit: Number,
       skip: Number,
       sort: String|Object

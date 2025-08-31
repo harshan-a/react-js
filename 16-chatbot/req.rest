@@ -1,5 +1,5 @@
 GET http://localhost:5000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inlhc2giLCJ1c2VySWQiOiI2ODkyMzljYTc4YmY0ZDllOTczMjJiYTciLCJpYXQiOjE3NTQ1MzI3NTksImV4cCI6MTc1NDUzMzY1OX0.t7Ao6-5m2lYECu0uQcxlxRxb9Npb02kGReOwloVKo8E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inlhc2giLCJ1c2VySWQiOiI2ODk3NTBjNjg3MGFjZGUxNzU1NDlhYzkiLCJpYXQiOjE3NTQ3NDcxMTUsImV4cCI6MTc1NDc0ODAxNX0.ynzyBNs7lIFfJjH_aJw06dqeIdKCf3uWsb_8QAMx9dA
 
 ###
 POST http://localhost:5000/api/v1/register
@@ -7,8 +7,8 @@ Content-Type: application/json
 
 {
   "name": "yash",
-  "email": "example1@gmail.com",
-  "password": "app"
+  "email": "example3@gmail.com",
+  "password": "appapp"
 }
 
 ###
@@ -16,8 +16,8 @@ POST http://localhost:5000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "example9@gmail.com",
-  "password": "app"
+  "email": "example3@gmail.com",
+  "password": "appapp"
 }
 
 ###

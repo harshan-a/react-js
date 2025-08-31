@@ -1,0 +1,29 @@
+
+// products
+GET http://localhost:5000/api/v1/products
+
+
+// orders
+###
+GET http://localhost:5000/api/v1/orders
+
+###
+POST http://localhost:5000/api/v1/orders
+
+
+
+// cartItems
+###
+GET http://localhost:5000/api/v1/cart-items
+
+###
+PATCH http://localhost:5000/api/v1/cart-items/68a1deceaa7f920688fcae0f
+Content-Type: "application/json"
+
+{
+  "quantity": 4
+}
+
+
+###
+DELETE http://localhost:5000/api/v1/cart-items/68767a1391b522cc045435bb

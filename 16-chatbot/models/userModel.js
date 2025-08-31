@@ -68,7 +68,7 @@ userSchema.methods.createRefreshToken = function () {
   );
 }
 userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compare(password, "$2b$10$ylObtZMPCnpkMHoB.wnItuRcNRZ0YOwFN/9kQQgxPfZsikcFLz/1e");
+  return bcrypt.compare(password, this.password);
 }
 
 module.exports = mongoose.model("user", userSchema);
