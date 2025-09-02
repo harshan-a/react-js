@@ -32,7 +32,7 @@ function ChatMessages (props) {
             className="chat-welcome-message"
           >
             Welcome to the chatbot project! Send a message using the textbox 
-            {containerPosition === "bottom" ? "above" : "below"}.
+            {containerPosition === "bottom" ? " above" : " below"}.
           </span>
           ) : (
             chatMessages.map(chatMessage => 

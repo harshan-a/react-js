@@ -32,10 +32,10 @@ app.use(cors({
   origin: "http://localhost:4000"
 }));
 app.use(xss());
-app.use(rateLimiter({
-  windowMs: 15 * 60 * 60 * 1000,
-  max: 10
-}));
+// app.use(rateLimiter({
+//   windowMs: 15 * 60 * 60 * 1000,
+//   max: 10
+// }));
 
 
 // parsing middlewares :
@@ -43,18 +43,18 @@ app.use(cookieParser());
 app.use(express.json());
 
 // log request
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 // auth middleware;
 // app.use(checkAuthToken);
 
-app.get("/", checkAuthToken, (req, res, next) => {
-  if(req.token) {
-    return authMiddleware(req, res, next);
-  }
+// app.get("/", checkAuthToken, (req, res, next) => {
+//   if(req.token) {
+//     return authMiddleware(req, res, next);
+//   }
 
-  res.redirect("/index.html");
-})
+//   res.redirect("/index.html");
+// })
 
 // serve static files
 app.use(express.static("./public/dist"));
@@ -62,7 +62,7 @@ app.use(express.static("./public/dist"));
 
 
 // custom routes;
-app.use("/api/v1/", authRouter);
+// app.use("/api/v1/", authRouter);
 
 
 
