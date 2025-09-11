@@ -1,0 +1,9 @@
+.chat-bot-container {
+  display: flex;
+  max-width: 600px;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  /* position: relative; */
+  height: 100vh;
+}

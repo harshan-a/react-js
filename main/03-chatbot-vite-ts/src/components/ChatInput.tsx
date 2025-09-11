@@ -1,11 +1,26 @@
-import { useState, useRef } from "react";
+import { 
+  useState, 
+  useRef, 
+  type RefObject,
+  type ChangeEvent,
+  type KeyboardEvent,
+} from "react";
 import { Chatbot } from "supersimpledev";
 import dayjs from "dayjs";
 
+import type { ChatMessagesType } from '../utils/types'
 import loadingSpinner from "../assets/loading-spinner.gif"
 import "./ChatInput.css";
 
-function ChatInput(props) {
+
+type ChatInputProps = {
+  chatMessages: ChatMessagesType
+  setChatMessages: (chatMessages: ChatMessagesType) => void
+  containerPosition: string
+  inputRef: RefObject<HTMLInputElement | null>
+}
+
+function ChatInput(props: ChatInputProps) {
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -51,12 +66,12 @@ function ChatInput(props) {
     !isLoading && setChatMessages([]);
   }
 
-  function handleInputChange(event) {
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setInputText(value);
   }
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     const { key } = e;
     if (key === "Enter") {
       handleSendMessage();
@@ -77,7 +92,7 @@ function ChatInput(props) {
         <input
           type="text"
           placeholder="Send a message to Chatbot"
-          size="25"
+          size={25}
           onInput={handleInputChange}
           onKeyDown={handleKeyDown}
           value={inputText}

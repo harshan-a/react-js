@@ -5,20 +5,23 @@ import ChatMessages from "./components/ChatMessages";
 import ChatInput from "./components/ChatInput";
 import PositionSwitcher from "./components/PositionSwitcher";
 
+import type { ChatMessagesType } from "./utils/types"
+
 import profileImage from "./assets/profile-1.jpg"
 
 import './App.css'
 
 
 function App () {
-  const position = localStorage.getItem("position") || "bottom";
-  const savedChatMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  const position = localStorage.getItem("position") as "top" | "bottom" || "bottom";
+  const localChatMessages = localStorage.getItem("chatMessages")
+  const savedChatMessages: ChatMessagesType | [] = localChatMessages ? JSON.parse(localChatMessages) : [];
 
   const [ textboxPosition, setTextboxPosition ] = useState(position)
 
   const [ chatMessages, setChatMessages ] = useState(savedChatMessages)
 
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     Chatbot.addResponses({
@@ -31,11 +34,10 @@ function App () {
     localStorage.setItem("chatMessages", JSON.stringify(chatMessages));
   }, [chatMessages]);
 
-  function handleKeyDown (event) {
+  function handleKeyDown (event: KeyboardEvent) {
     const { key } = event;
     if(key === "/") {
-      const inputElem = inputRef.current;
-      inputElem.focus();
+      inputRef.current?.focus();
     }
   }
 

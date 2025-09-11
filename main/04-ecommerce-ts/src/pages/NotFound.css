@@ -1,0 +1,31 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container span {
+  font-size: 120px;
+  background-image: linear-gradient(to bottom, green, green, blue);
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.container .first-p {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: blue;
+}
+
+.container .second-p {
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+
+.container button {
+  padding: 6px 12px;
+}
