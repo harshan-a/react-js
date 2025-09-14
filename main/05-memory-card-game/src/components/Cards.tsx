@@ -1,7 +1,8 @@
-import { 
-  useState, 
-  type Dispatch, 
-  type SetStateAction 
+import {
+  useState,
+  useEffect,
+  type Dispatch,
+  type SetStateAction
 } from "react"
 import Card from "./Card"
 
@@ -10,20 +11,49 @@ import type { Cards, Card as CardType } from "../utils/types"
 import "./Cards.css"
 
 type CardsProps = {
-  cards: Cards
+  restartGame: boolean
+  passCount: number
   setPassCount: Dispatch<SetStateAction<number>>
+  setGameWon: Dispatch<SetStateAction<boolean>>
   setAttemptCount: Dispatch<SetStateAction<number>>
 }
 
-export default function Cards({ 
-  cards, 
-  setPassCount, 
+export default function Cards({
+  restartGame,
+  passCount,
+  setPassCount,
+  setGameWon,
   setAttemptCount
 }: CardsProps) {
+  const [cards, setCards] = useState<Cards>([])
   const [count, setCount] = useState(0)
   const [flippedCards, setFlippedCards] = useState<[CardType | null, CardType | null]>([null, null])
   const [matchedCards, setMatchedCards] = useState<Array<CardType>>([])
   const [shake, setShake] = useState(false)
+  const [flipAll, setFlipAll] = useState(false)
+
+
+  useEffect(() => {
+    const numbers = [...Array(8).keys()].map(n => n + 1)
+    const suffleCards = [...numbers, ...numbers]
+      .sort(() => Math.random() - 0.5)
+      .map((num, i) => ({ id: i, img: `images/img-${num}.png` }))
+
+    setCards(suffleCards)
+    setAttemptCount(0)
+    setPassCount(0)
+    setFlipAll(true)
+    const timeoutId = setTimeout(() => {
+      setFlipAll(false)
+    }, 3000)
+
+    return () => clearTimeout(timeoutId)
+
+    // console.log(Array(8).keys())
+    // console.log(Object.values(numbers))
+    // console.log(suffleCards)
+  }, [restartGame, setAttemptCount, setPassCount])
+  
 
   // function controlFlippedCards (id: number) {
   //   return flippedCards.includes(id)
@@ -41,18 +71,21 @@ export default function Cards({
       const flippedCardsDummy: [CardType | null, CardType | null] = [...flippedCards]
       flippedCardsDummy[count] = card
       setFlippedCards(flippedCardsDummy)
-      
+
       const [card1, card2] = flippedCardsDummy
-      if(card1 && card2) {
+      if (card1 && card2) {
         setAttemptCount(p => p + 1)
-        if(card1.img === card2.img) {
+        if (card1.img === card2.img) {
           setMatchedCards([...matchedCards, card1, card2])
           setFlippedCards([null, null])
           setCount(0)
-          setTimeout(() => {
-            setPassCount(p => p + 1)
-          }, 400)
-          return 
+          setPassCount(p => p + 1)
+          if(passCount + 1 === 8) {
+            setTimeout(() => {
+              setGameWon(true)
+            }, 500)
+          }
+          return
 
         } else {
           setTimeout(() => {
@@ -82,6 +115,7 @@ export default function Cards({
               flippedCards={flippedCards}
               matchedCards={matchedCards}
               shake={shake}
+              flipAll={flipAll}
             />
           )
         })

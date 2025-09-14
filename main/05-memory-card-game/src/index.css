@@ -2,7 +2,8 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  padding: 20px;
+  height: calc(100vh - 40px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,18 +13,34 @@ body {
 * {
   user-select: none;
   font-family: "Roboto", sans-serif;
+  color: rgb(0, 166, 221);
 }
 
 img {
   width: 70px;
 }
 
-@media(min-width: 1300px) {
-  img {
-    width: 100px;
-  }
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 7px;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.15s;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transform: translateY(-15px);
+  display: flex;
+  align-items: center;
 }
-@media((min-width: 800px) and (max-width: 1300px)) {
+
+button:hover {
+  transform: translateY(-15px) scale(1.05) 
+}
+button:active {
+  transform: translateY(-15px) scale(1)
+}
+
+@media(min-width: 800px) {
   img {
     width: 80px;
   }

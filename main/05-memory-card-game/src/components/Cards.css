@@ -1,16 +1,16 @@
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  gap: 15px;
+  grid-template-columns: repeat(4, 104px);
+  grid-gap: 20px;
 }
 
 @media(min-width: 1300px) {
   .cards-grid {
-    grid-template-columns: repeat(8, 150px);
+    grid-template-columns: repeat(8, 124px);
   }
 }
 @media((min-width: 800px) and (max-width: 1300px)) {
   .cards-grid {
-    grid-template-columns: repeat(6, 120px);
+    grid-template-columns: repeat(6, 124px);
   }
 }

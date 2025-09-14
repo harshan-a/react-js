@@ -12,17 +12,18 @@ type CardProps = {
   flippedCards: [Card | null, Card | null]
   matchedCards: Card[]
   shake: boolean
+  flipAll: boolean
 }
 
 export default function Card({
-  card, handleCardClick, flippedCards, matchedCards, shake
+  card, handleCardClick, flippedCards, matchedCards, shake, flipAll
 }: CardProps) {
   
   // const [isClicked, setIsClicked] = useState<boolean>(false)
 
   const cardClassName = clsx(
     "card", 
-    { flip: flippedCards.includes(card) || matchedCards.includes(card) },
+    { flip: flippedCards.includes(card) || matchedCards.includes(card) || flipAll },
     {shake: shake && flippedCards.includes(card)}
   )
 

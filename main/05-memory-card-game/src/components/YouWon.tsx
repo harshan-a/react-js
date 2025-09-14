@@ -3,27 +3,29 @@ import { useEffect, useState, type Dispatch, type SetStateAction } from "react"
 import "./YouWon.css"
 
 type YouWonProps = {
-  setPassCount: Dispatch<SetStateAction<number>>
+  setGameWon: Dispatch<SetStateAction<boolean>>
   setRestartGame: Dispatch<SetStateAction<boolean>>
 }
 
-export default function YouWon({ setRestartGame, setPassCount }: YouWonProps) {
+export default function YouWon({ setRestartGame, setGameWon }: YouWonProps) {
   const [restartCount, setRestartCount] = useState(3)
 
-  useEffect(() => {
-    if (restartCount >= 0) {
-      setTimeout(() => {
-        setRestartCount(restartCount - 1)
-      }, 1000)
-    }
-  
+  if (restartCount > 0) {
     setTimeout(() => {
-      setPassCount(0)
+      console.log("check");
+      setRestartCount(restartCount - 1)
+    }, 1000)
+  }
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setGameWon(false)
       setRestartGame(pre => !pre)
     }, 3000)
 
+    return () => clearTimeout(timeoutId)
 
-  }, [restartCount, setPassCount, setRestartGame])
+  }, [setGameWon, setRestartGame])
 
 
   return (
