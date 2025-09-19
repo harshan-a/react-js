@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: var(--border-bottom-primary);
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.title {
+  margin: auto;
+  font-size: 1.3em;
+}
+
+.header button {
+  position: relative;
+}
+
+.header button span {
+  font-size: 2.2em;
+}

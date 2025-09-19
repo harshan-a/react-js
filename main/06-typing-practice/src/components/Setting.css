@@ -1,0 +1,61 @@
+.setting {
+  position: absolute;
+  width: 180px;
+  top: 30px;
+  right: 43px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+}
+
+.setting * {
+  font-size: 1.01em;
+  color: inherit;
+}
+
+.setting .timer-container,
+.setting .paragraph-mode-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.setting .paragraph-mode-container {
+  margin-top: 10px;
+}
+.setting .timer-container label,
+.setting .paragraph-mode-container label {
+  margin-right: 5px;
+}
+.setting .timer-container input[type="number"] {
+  flex: 0.8;
+  padding-left: 3px;
+}
+
+.setting .paragraph-mode-container select {
+  flex: 0.95;
+}
+
+.setting .btn {
+  margin: 10px auto 0 auto;
+  position: relative;
+  border: 1px solid black;
+}
+
+.setting .btn:hover {
+  border-color: rgba(0, 0, 0, 0.507);
+}
+.setting .btn:active {
+  border-color: transparent;
+}
+
+/* .setting .btn::after {
+  content: "";
+  position: absolute;
+  background: black;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  /* input element doesn't support the pseudo elements
+} */

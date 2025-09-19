@@ -1,0 +1,16 @@
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border-bottom-primary);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.details .detail {
+  min-width: fit-content;
+  flex-shrink: 0;
+  cursor: text;
+  position: relative;
+}

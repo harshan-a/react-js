@@ -2,7 +2,7 @@
   color: rgb(0, 166, 221);
   font-size: 25px;
   text-align: center;
-  animation: scaling 0.5s linear;
+  animation: scaling 0.5s ease-in-out;
 }
 .you-won h1 {
   font-size: 80px;
@@ -10,14 +10,14 @@
 
 @keyframes scaling {
   0% {
-    transform: scale(0)
+    transform: scale(0);
   }
   /* 20% {
     transform: scale(1.5)
   } */
-  50% {
+  /* 50% {
     transform: scale(2)
-  }
+  } */
   /* 60% {
     transform: scale(1.8)
   }
@@ -25,6 +25,6 @@
     transform: scale(1.3)
   } */
   100% {
-    transform: scale(1)
+    transform: scale(1);
   }
 }

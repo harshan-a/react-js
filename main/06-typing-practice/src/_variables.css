@@ -1,0 +1,7 @@
+:root {
+  --primary-color: rgb(245, 245, 245);
+
+  --border-bottom-primary: 1px solid var(--primary-color, white);
+
+  --green-color: rgb(71, 233, 71);
+}
