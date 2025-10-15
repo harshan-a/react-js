@@ -1,0 +1,39 @@
+.video-container {
+  position: relative;
+}
+.video-container:hover button {
+  opacity: 1;
+}
+.video-container button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  bottom: 40px;
+  right: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+.video-container button:hover {
+  opacity: 0.8;
+}
+.video-container button:active {
+  transform: scale(0.9);
+}
+.video-container button.play::before {
+  content: "| |";
+  font-size: 1.3rem;
+  /* font-weight: 100; */
+  margin-bottom: 4px;
+  margin-left: 1px;
+}
+.video-container button.pause::before {
+  content: "\25BA";
+  font-size: 1.5rem;
+  margin-left: 4px;
+  margin-bottom: 1px;
+}

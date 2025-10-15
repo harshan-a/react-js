@@ -1,0 +1,206 @@
+.top-section {
+  background: url("../../../assets/ApartmentCoder.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-width: 800px;
+  height: 628px;
+  border: none;
+  border-radius: 22px;
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.3) inset;
+  transition: transform 0.35s ease-in-out;
+  user-select: none;
+}
+.top-section:hover {
+  transform: scale(1.05);
+}
+.top-section .container {
+  color: var(--secondary-font-color);
+  padding: 64px;
+  max-width: 700px;
+  animation: top-section-container 1s ease-out 0s 1 forwards;
+  transform-style: preserve-3d;
+  transform: rotateY(60deg);
+}
+
+@keyframes top-section-container {
+  /* from {
+    transform: rotateY(90deg);
+  } */
+  to {
+    transform: rotateY(0deg);
+  }
+}
+.top-section .container h1 {
+  max-height: 220px;
+  font-size: 72px;
+  margin-top: -8px;
+  line-height: 72.88px;
+  font-weight: 500;
+  overflow: hidden;
+  /* user-select: none; */
+}
+.top-section .container .main {
+  max-width: 100%;
+  height: 178px;
+  margin-top: 40px;
+  margin-right: 64px;
+  backdrop-filter: blur(80px);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section .container .main .mode {
+  width: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  display: flex;
+  column-gap: 5px;
+}
+.top-section .container .main .mode span {
+  padding: 6px 24px;
+  border-radius: 50px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.top-section .container .main .mode span.active {
+  border-color: var(--secondary-font-color);
+}
+
+.top-section .container .main .mode-content {
+  padding-top: 24px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.top-section .container .main .mode-content .client .client-input-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  input[type="text"] {
+  /* display: block; */
+  padding: 15px 115px 15px 24px;
+  font-size: 0.97em;
+  /* border: none; */
+  border: 2px solid rgb(26, 26, 26);
+  border-radius: 26px;
+  flex: 1;
+}
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  input[type="text"]:focus,
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  input[type="text"]:focus-visible {
+  outline: 2px solid var(--green);
+}
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: fit-content;
+  padding: 0 25px 0 12px;
+  border: none;
+  border-radius: 26px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-font-color);
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  button
+  img {
+  color: var(--green);
+  width: 20px;
+}
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  button::after {
+  content: "Search";
+  margin-left: 12px;
+  font-size: 1rem;
+}
+
+.top-section
+  .container
+  .main
+  .mode-content
+  .client
+  .client-input-container
+  button:active {
+  transform: scale(0.9);
+}
+.top-section .container .main .mode-content .client .logo-container {
+  display: flex;
+  width: calc(100% - 64px);
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.top-section .container .main .mode-content .freelancer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.top-section .container .main .mode-content .freelancer-content p {
+  width: 450px;
+  font-size: 1.22rem;
+  text-align: center;
+  line-height: 30px;
+  margin-top: -5px;
+}
+
+.top-section .container .main .mode-content .freelancer-content button {
+  padding: 10px 25px;
+  font-size: 1.04rem;
+}

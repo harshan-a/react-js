@@ -1,0 +1,110 @@
+.footer {
+  position: relative;
+  margin: 0 24px 24px;
+  /* margin-top: 20px; */
+  padding: 64px 80px 50px;
+  background: var(--primary-font-color);
+  border-radius: 10px;
+  color: var(--secondary-font-color);
+  min-width: fit-content;
+  font-size: 0.85rem;
+}
+.footer * {
+  letter-spacing: 0.8px;
+  user-select: none;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  background: rgba(0, 80, 0, 0.8);
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  /* border-radius: 100%; */
+  border-bottom-left-radius: 100%;
+  border-top-right-radius: inherit;
+  /* z-index: 1; */
+}
+
+/* 
+.footer::after {
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 70px;
+  width: 1px;
+  height: 1px;
+  box-shadow: 0 0 50px 20px white;  horizontal vertical blur spread color 
+  background: rgba(255, 255, 255, 0.342);
+} 
+*/
+
+/* 
+  .footer .services-container ==> {
+    select all child (even grand child) that contains ".services-container" class
+  }
+  .footer > .services-container ==> {
+    select only the child of ".footer" class that contains ".services-container" class
+  }
+  .footer + .services-container ==> {
+    select the element(contains class ".services-container") immediate next to ".footer" only first
+*/
+.footer .services-container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 0 24px 15px;
+  column-gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.footer .services-container .service {
+  /* min-width: 250px; */
+  width: 200px;
+  /* overflow: hidden; */
+  z-index: 2;
+}
+.footer .services-container .service > span {
+  display: block;
+  opacity: 0.65;
+  margin-bottom: 15px;
+}
+.footer > .services-container > .service > ul {
+  list-style: none;
+}
+.footer > .services-container > .service > ul > li {
+  width: 100%;
+  margin-bottom: 5px;
+  word-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.footer > .services-container > .service > ul > li > a {
+  text-decoration: none;
+  color: inherit;
+}
+.footer > .services-container > .service > ul > li > a:hover {
+  text-shadow: 0px 0px 0.5px rgb(255, 255, 255),
+    0 0 0.2em rgba(0, 128, 0, 0.833), 0 0 0.05em rgba(0, 128, 0, 0.833);
+}
+.footer .social-media-container {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+.footer > .social-media-container span:first-child {
+  margin-right: 15px;
+  opacity: 0.65;
+}
+.footer .social-media-container img {
+  width: 28px;
+  transition: transform 0.15s ease-in-out;
+}
+.footer .social-media-container img:hover {
+  transform: scale(1.4);
+}
+.footer .social-media-container img:active {
+  transform: scale(1);
+}

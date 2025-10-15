@@ -55,8 +55,10 @@
 // }
 
 import java.util.Scanner;
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.text.NumberFormat;
+// NumberFormat class is an  abstract class used for format the number as currency or percent using NumberFormat.getCurrencyInstance().format(-number-) and NumberFormat.getPercentInstance().format(-number-)
+
 class MortgageCalculator {
   public static final byte MONTHS_OF_YEAR = 12;
   public static final byte PERCENT = 100;
@@ -71,6 +73,7 @@ class MortgageCalculator {
 
     System.out.print("Period (Year): ");
     byte period = sc.nextByte();
+    sc.close();
 
     double monthlyInterst = (annualInterstRate / PERCENT) / MONTHS_OF_YEAR;
     int numberOfPayments = period * MONTHS_OF_YEAR;
@@ -83,7 +86,7 @@ class MortgageCalculator {
     // System.out.println("Period (Year) is " + period);
     // System.out.println("monthlyInterst " + monthlyInterst);
     // System.out.println("numberOfPayments " + numberOfPayments);
-    System.out.println("Montgage: " + NumberFormat.getCurrencyInstance().format(1323412.213));
+    System.out.println("Montgage: " + NumberFormat.getCurrencyInstance().format(montgage));
     // float f = sc.nextFloat();
     // Utils utils = new Utils();
     // utils.formatMoney(f, 2);
@@ -94,7 +97,7 @@ class Utils {
   public String formatMoney(double amount, int toFixed) {
     System.out.println(amount);
     String amtString = String.format("%." + toFixed + "f", amount);
-    String[] amtArray = amtString.split("\\.");
+    // String[] amtArray = amtString.split("\\.");
     // // if(amtArray.length > 2) return false;
     // if(amtArray[1].length() > toFixed) {
     //   char toFixedNum = amtArray[1].charAt(toFixed);

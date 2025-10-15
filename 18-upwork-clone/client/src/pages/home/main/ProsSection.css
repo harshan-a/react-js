@@ -1,0 +1,76 @@
+@import "../../../_variables.css";
+
+.pros-section {
+  width: 100%;
+  color: var(--primary-font-color);
+  user-select: none;
+}
+
+.pros-section h4:first-child {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 32px;
+  /* min-width: fit-content; */
+  white-space: nowrap;
+}
+
+.pros-section .domain-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 14px;
+}
+.pros-section .domain-container .domain-wrapper {
+  padding: 6px;
+  display: flex;
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.pros-section .domain-container .domain-wrapper::before {
+  transition: opacity 0.4s ease;
+  content: "";
+  position: absolute;
+  inset: -2px;
+  /* top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px; */
+
+  background: linear-gradient(
+    to bottom,
+    /* start color with opacity */ var(--primary-font-color) /* end color */,
+    /* direction */ var(--green)
+  );
+  opacity: 0;
+  border-radius: 17px;
+  z-index: -1;
+}
+.pros-section .domain-container .domain-wrapper:hover::before {
+  opacity: 1;
+}
+.pros-section .domain-container .domain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  font-size: 1.24rem;
+  line-height: 29px;
+  row-gap: 15px;
+  border: 2px solid rgb(231, 231, 231);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.pros-section .domain-container .domain span {
+  margin-bottom: 8px;
+  width: 150px;
+}
+
+@media (max-width: 1150px) {
+  .pros-section .domain-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

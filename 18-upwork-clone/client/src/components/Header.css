@@ -1,0 +1,92 @@
+@import "../_variables.css";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* background: lightblue; */
+
+  height: 63px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  background: white;
+  z-index: 1000;
+  user-select: none;
+}
+.header * {
+  color: var(--primary-font-color);
+  font-size: 13.6px;
+  letter-spacing: 0.7px;
+}
+.logo-container {
+  width: 130px;
+  flex: 0 0 130px; /* flex-grow flex-shrink flex-basis */
+  position: relative;
+}
+.logo {
+  pointer-events: none;
+  width: 85px;
+  display: block;
+  margin: 0 auto;
+}
+/* .logo-container::after {
+  content: "clone";
+  position: absolute;
+  top: 65%;
+  left: 52%;
+  color: var(--green);
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  min-width: 200px;
+  flex: 1 0 fit-content;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.links-container a {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+  cursor: pointer;
+}
+.links-container a:hover span:first-child {
+  /* text-decoration: underline; */
+  color: var(--green);
+}
+.links-container a .links-arrow {
+  font-size: 1rem;
+  transform: rotate(180deg);
+  transition: transform 0.15s;
+  color: black;
+  margin-left: 1px;
+}
+.links-container a:hover .links-arrow {
+  transform: rotate(0deg);
+}
+
+.buttons-container {
+  margin-right: 25px;
+  flex: 0 0 fit-content;
+}
+.buttons-container .signup-btn {
+  margin-left: 25px;
+  padding: 12px 25px;
+  color: white;
+}
+.buttons-container .login-btn {
+  background: none;
+  border: none;
+  position: relative;
+}
+.buttons-container .login-btn:hover {
+  text-decoration: underline;
+}
+.buttons-container .login-btn:active {
+  text-decoration: none;
+}

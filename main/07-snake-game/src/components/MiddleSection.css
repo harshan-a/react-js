@@ -25,7 +25,7 @@
 }
 .middle-section .game-grid .snake.head {
   position: relative;
-  transition: transform 0.05s;
+  /* transition: transform 0.05s; */
 }
 
 .middle-section .game-grid .snake.head::after {

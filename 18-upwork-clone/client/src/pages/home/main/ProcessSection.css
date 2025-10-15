@@ -1,0 +1,127 @@
+.process-section {
+  width: 100%;
+  user-select: none;
+}
+.process-section * {
+  color: var(--primary-font-color);
+  letter-spacing: 0.7px;
+}
+.process-section .process-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.process-section .process-section-header h4:first-child {
+  font-size: 1.7rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-right: 50px;
+}
+.process-section .process-section-header .process-mode {
+  /* outline: 1px solid lightgray; */
+  border-radius: 32px;
+  /* padding: 2px; */
+  flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+}
+.process-section .process-section-header .process-mode button {
+  background: white;
+  padding: 9px 25px;
+  width: 175px;
+  border-radius: 32px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+}
+
+.process-section .process-section-header .process-mode button.active {
+  border-color: var(--green);
+  animation: button-slide 250ms ease-in-out 0s 1;
+}
+.process-section .process-section-header .process-mode .jobs.active {
+  --translate-value: -100%;
+}
+.process-section .process-section-header .process-mode .hire.active {
+  --translate-value: 100%;
+}
+
+@property --translate-value {
+  syntax: "<length> | <percentage>";
+}
+@keyframes button-slide {
+  from {
+    transform: translateX(var(--translate-value));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.process-section .process-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 24px;
+  min-width: fit-content;
+  padding: 16px 0;
+
+  /* outline: 1px solid; */
+}
+.process-section .process-container .process {
+  /* height: 400px; */
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+
+  /* outline: 1px solid; */
+}
+
+.process-section .process-container .process .pic {
+  width: 100%;
+  min-height: 260px;
+  height: 260px;
+  border-radius: 16px;
+  border: none;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 16px;
+
+  /* background-color: black; */
+}
+.process-section .process-container .process .details {
+  width: calc(100% - 12px);
+  padding: 6px;
+}
+
+.process-section .process-container .process .details h5 {
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  /* white-space: nowrap; */
+}
+.process-section .process-container .process .details .content {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out; /* ease: slow start, then fast and slow end */
+}
+.process-section .process-container .process .details .content p {
+  font-size: 0.85rem;
+  color: rgba(43, 43, 43, 0.719);
+  line-height: 17px;
+  margin-bottom: 20px;
+}
+.process-section .process-container .process .details .content button {
+  width: 100%;
+  padding: 10px;
+  color: var(--secondary-font-color);
+  border-radius: 8px;
+}
+.process-section .process-container .process .details .content button::before {
+  border-radius: 8px;
+}
+
+.process-section .process-container .process:hover .details .content {
+  opacity: 1;
+}
